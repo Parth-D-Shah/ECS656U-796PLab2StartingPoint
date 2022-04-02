@@ -12,14 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 
-@RestController
-public class PingPongEndpoint {    
+@Controller
+public class PingPongEndpoint {
 
-	GRPCClientService grpcClientService;    
+	GRPCClientService grpcClientService;
 	@Autowired
     	public PingPongEndpoint(GRPCClientService grpcClientService) {
         	this.grpcClientService = grpcClientService;
-    	}    
+    	}
 	@GetMapping("/ping")
     	public String ping() {
         	return grpcClientService.ping();
@@ -27,5 +27,8 @@ public class PingPongEndpoint {
         @GetMapping("/add")
 	public String add() {
 		return grpcClientService.add();
+
+	@GetMapping("/")
+		 public String upload(Model model) {return "upload";}
 	}
 }
