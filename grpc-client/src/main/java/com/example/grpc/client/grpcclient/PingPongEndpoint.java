@@ -1,5 +1,7 @@
 package com.example.grpc.client.grpcclient;
 
+import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
