@@ -16,7 +16,7 @@ import java.io.IOException;
 
 @Controller
 public class PingPongEndpoint{
-
+//comment
 	GRPCClientService grpcClientService;
 	@Autowired
     	public PingPongEndpoint(GRPCClientService grpcClientService) {
@@ -41,7 +41,7 @@ public class PingPongEndpoint{
 	public String handleFileUpload(@RequestParam("matrixA") MultipartFile matrixA, @RequestParam("matrixB") MultipartFile matrixB, RedirectAttributes redirectAttributes) {
 
 		String contentA = new String();
-		String contentB = new String(); 
+		String contentB = new String();
 		try {
 				contentA = new String(matrixA.getBytes());
 				contentB = new String(matrixB.getBytes());
