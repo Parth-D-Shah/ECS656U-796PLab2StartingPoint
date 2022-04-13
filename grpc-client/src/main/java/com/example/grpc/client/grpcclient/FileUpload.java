@@ -36,9 +36,6 @@ public class FileUpload {
 				String matrix_B_String = new String(matrix_B);
 				String[] matrix_A_Rows = matrix_A_String.split("\n"); // split the string into rows
 				String[] matrix_B_Rows = matrix_B_String.split("\n");
-				int matrix_A_Num_Of_Ints = matrix_A_String.split(" ").length;
-				int matrix_B_Num_Of_Ints = matrix_B_String.split(" ").length;
-
 
 				ArrayList<Integer> matrix_A_Columns = new ArrayList<Integer>();
 				ArrayList<Integer> matrix_B_Columns = new ArrayList<Integer>();
