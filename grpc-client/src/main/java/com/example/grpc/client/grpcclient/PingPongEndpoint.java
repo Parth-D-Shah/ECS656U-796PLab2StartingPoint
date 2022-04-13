@@ -1,7 +1,5 @@
 package com.example.grpc.client.grpcclient;
 
-import org.springframework.ui.Model;
-import org.springframework.stereotype.Controller;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 
 @Controller
-public class PingPongEndpoint{
+public class PingPongEndpoint {
 
 	GRPCClientService grpcClientService;
 	@Autowired
@@ -23,18 +21,14 @@ public class PingPongEndpoint{
         	this.grpcClientService = grpcClientService;
     	}
 	@GetMapping("/ping")
-			public String ping(Model model) {
-			    model.addAttribute("response", grpcClientService.ping());
-			       	return "upload";
-			}
-	@GetMapping("/add")
-			public String add() {
-					return grpcClientService.add();
-		  }
+    	public String ping() {
+        	return grpcClientService.ping();
+    	}
+        @GetMapping("/add")
+	public String add() {
+		return grpcClientService.add();
 
 	@GetMapping("/")
-		 public String upload(Model model)
-		 {
-			 return "upload";
-		 }
+		 public String upload(Model model) {return "upload";}
 	}
+}
