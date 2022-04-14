@@ -22,6 +22,11 @@ public class FileUpload {
 	 * return "uploadview";
 	 * }
 	 */
+	@RequestMapping("/")
+		 public String upload(Model model)
+		 {
+			 return "upload";
+		 }
 	@RequestMapping("/upload")
 	public String upload(Model model, @RequestParam("matrices") MultipartFile[] files) throws IOException {
 		try {
@@ -34,6 +39,7 @@ public class FileUpload {
 				byte[] matrix_B = files[1].getBytes();
 				String matrix_A_String = new String(matrix_A);
 				String matrix_B_String = new String(matrix_B);
+				System.out.println(matrix_A_String);
 				String[] matrix_A_Rows = matrix_A_String.split("\n"); // split the string into rows
 				String[] matrix_B_Rows = matrix_B_String.split("\n");
 
