@@ -39,16 +39,16 @@ public class FileUpload {
 				byte[] matrix_B = files[1].getBytes();
 				String matrix_A_String = new String(matrix_A);
 				String matrix_B_String = new String(matrix_B);
-				System.out.println(matrix_A_String);
+				model.addAttribute("matrixA", matrix_A_String);
+				model.addAttribute("matrixB", matrix_B_String);
 				String[] matrix_A_Rows = matrix_A_String.split("\n"); // split the string into rows
 				String[] matrix_B_Rows = matrix_B_String.split("\n");
-
+				
 				ArrayList<Integer> matrix_A_Columns = new ArrayList<Integer>();
 				ArrayList<Integer> matrix_B_Columns = new ArrayList<Integer>();
 				for(int i = 0; i < matrix_A_Rows.length; i++){
 					matrix_A_Columns.add(matrix_A_Rows[i].length() - matrix_A_Rows[i].replace(" ","").length());
 				}
-				System.out.println(matrix_A_Columns);
 				for(int i = 0; i < matrix_B_Rows.length; i++){
 					matrix_B_Columns.add(matrix_B_Rows[i].length() - matrix_B_Rows[i].replace(" ","").length());
 				}
@@ -98,6 +98,6 @@ public class FileUpload {
 			}
 		}
 		model.addAttribute("message", "Successfully uploaded files " + fileNames.toString());
-		return "uploadchecker";
+		return "uploadsuccess";
 	}
 }
