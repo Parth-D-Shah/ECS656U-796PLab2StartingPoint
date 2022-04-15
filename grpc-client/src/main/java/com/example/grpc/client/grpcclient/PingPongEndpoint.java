@@ -27,11 +27,11 @@ public class PingPongEndpoint {
         	return grpcClientService.ping();
     	}
     @RequestMapping("/add")
-	public String add() {
-		return grpcClientService.add();
+	public String add(@RequestParam String m1, String m2) {
+		return grpcClientService.add(m1,m2);
 	}
 	@RequestMapping("/multiply")
-	public String multiply() {
-		return grpcClientService.multiply();
+	public String multiply(@RequestParam String m1, String m2) {
+		return grpcClientService.multiply(m1,m2);
 	}
 }

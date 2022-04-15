@@ -8,42 +8,50 @@ public interface MatrixRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 a00 = 1;</code>
+   * <code>repeated .matrixmult.Mrow mat1 = 1;</code>
    */
-  int getA00();
+  java.util.List<com.example.grpc.server.grpcserver.Mrow> 
+      getMat1List();
+  /**
+   * <code>repeated .matrixmult.Mrow mat1 = 1;</code>
+   */
+  com.example.grpc.server.grpcserver.Mrow getMat1(int index);
+  /**
+   * <code>repeated .matrixmult.Mrow mat1 = 1;</code>
+   */
+  int getMat1Count();
+  /**
+   * <code>repeated .matrixmult.Mrow mat1 = 1;</code>
+   */
+  java.util.List<? extends com.example.grpc.server.grpcserver.MrowOrBuilder> 
+      getMat1OrBuilderList();
+  /**
+   * <code>repeated .matrixmult.Mrow mat1 = 1;</code>
+   */
+  com.example.grpc.server.grpcserver.MrowOrBuilder getMat1OrBuilder(
+      int index);
 
   /**
-   * <code>int32 a01 = 2;</code>
+   * <code>repeated .matrixmult.Mrow mat2 = 2;</code>
    */
-  int getA01();
-
+  java.util.List<com.example.grpc.server.grpcserver.Mrow> 
+      getMat2List();
   /**
-   * <code>int32 a10 = 3;</code>
+   * <code>repeated .matrixmult.Mrow mat2 = 2;</code>
    */
-  int getA10();
-
+  com.example.grpc.server.grpcserver.Mrow getMat2(int index);
   /**
-   * <code>int32 a11 = 4;</code>
+   * <code>repeated .matrixmult.Mrow mat2 = 2;</code>
    */
-  int getA11();
-
+  int getMat2Count();
   /**
-   * <code>int32 b00 = 5;</code>
+   * <code>repeated .matrixmult.Mrow mat2 = 2;</code>
    */
-  int getB00();
-
+  java.util.List<? extends com.example.grpc.server.grpcserver.MrowOrBuilder> 
+      getMat2OrBuilderList();
   /**
-   * <code>int32 b01 = 6;</code>
+   * <code>repeated .matrixmult.Mrow mat2 = 2;</code>
    */
-  int getB01();
-
-  /**
-   * <code>int32 b10 = 7;</code>
-   */
-  int getB10();
-
-  /**
-   * <code>int32 b11 = 8;</code>
-   */
-  int getB11();
+  com.example.grpc.server.grpcserver.MrowOrBuilder getMat2OrBuilder(
+      int index);
 }

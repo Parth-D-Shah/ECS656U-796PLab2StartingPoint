@@ -1,5 +1,9 @@
 package com.example.grpc.client.grpcclient;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.grpc.server.grpcserver.Mrow;
 import com.example.grpc.server.grpcserver.PingRequest;
 import com.example.grpc.server.grpcserver.PongResponse;
 import com.example.grpc.server.grpcserver.PingPongServiceGrpc;
@@ -21,31 +25,93 @@ public class GRPCClientService {
                 = PingPongServiceGrpc.newBlockingStub(channel);        
 		PongResponse helloResponse = stub.ping(PingRequest.newBuilder()
                 .setPing("")
-                .build());        
+                .build());       
 		channel.shutdown();        
 		return helloResponse.getPong();
     }
-    public String add(){
+    public String add(String m1, String m2){
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",9090)
 		.usePlaintext()
 		.build();
 		MatrixServiceGrpc.MatrixServiceBlockingStub stub
 		 = MatrixServiceGrpc.newBlockingStub(channel);
-		MatrixReply A=stub.addBlock(MatrixRequest.newBuilder()
-			.setA00(1)
-			.setA01(2)
-			.setA10(5)
-			.setA11(6)
-			.setB00(1)
-			.setB01(2)
-			.setB10(5)
-			.setB11(6)
-			.build());
-		String resp= A.getC00()+" "+A.getC01()+"<br>"+A.getC10()+" "+A.getC11()+"\n";
-		return resp;
+
+		MatrixRequest.Builder request_M = MatrixRequest.newBuilder();
+		String[] m1_split = m1.split("\n");
+		for(int i=0; i < m1_split.length; i++){
+			String[] current_Row_Split = m1_split[i].split(" ");
+			Mrow.Builder matrix_Row = Mrow.newBuilder();
+			for(int j=0; j < current_Row_Split.length; j++){
+				int temp =Integer.parseInt(current_Row_Split[j].substring(0,1));
+				matrix_Row.addRow(temp);
+			}
+			request_M.addMat1(matrix_Row);
+		}
+		String[] m2_split = m2.split("\n");
+		for(int i=0; i < m2_split.length; i++){
+			String[] current_Row_Split = m2_split[i].split(" ");
+			Mrow.Builder matrix_Row = Mrow.newBuilder();
+			for(int j=0; j < current_Row_Split.length; j++){
+				int temp =Integer.parseInt(current_Row_Split[j].substring(0,1));
+				matrix_Row.addRow(temp);
+			}
+			request_M.addMat2(matrix_Row);
+		}
+		
+		MatrixReply response = stub.addBlock(request_M.build());
+		channel.shutdown();
+		
+		String result = "";
+		for(int i=0; i < response.getMatList().size(); i++){
+			List<Integer> currentRow = response.getMatList().get(i).getRowList();
+			for(int j=0; j < currentRow.size(); j++){
+				result += currentRow.get(j) + " ";
+			}
+			result += "<br/>";
+		}
+		return result;
     }
-	public String multiply(){
-		return "test";
+	public String multiply(String m1, String m2){
+		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",9090)
+		.usePlaintext()
+		.build();
+		MatrixServiceGrpc.MatrixServiceBlockingStub stub
+		 = MatrixServiceGrpc.newBlockingStub(channel);
+
+		MatrixRequest.Builder request_M = MatrixRequest.newBuilder();
+		String[] m1_split = m1.split("\n");
+		for(int i=0; i < m1_split.length; i++){
+			String[] current_Row_Split = m1_split[i].split(" ");
+			Mrow.Builder matrix_Row = Mrow.newBuilder();
+			for(int j=0; j < current_Row_Split.length; j++){
+				int temp =Integer.parseInt(current_Row_Split[j].substring(0,1));
+				matrix_Row.addRow(temp);
+			}
+			request_M.addMat1(matrix_Row);
+		}
+		String[] m2_split = m2.split("\n");
+		for(int i=0; i < m2_split.length; i++){
+			String[] current_Row_Split = m2_split[i].split(" ");
+			Mrow.Builder matrix_Row = Mrow.newBuilder();
+			for(int j=0; j < current_Row_Split.length; j++){
+				int temp =Integer.parseInt(current_Row_Split[j].substring(0,1));
+				matrix_Row.addRow(temp);
+			}
+			request_M.addMat2(matrix_Row);
+		}
+		
+		MatrixReply response = stub.addBlock(request_M.build());
+		channel.shutdown();
+		
+		String result = "";
+		for(int i=0; i < response.getMatList().size(); i++){
+			List<Integer> currentRow = response.getMatList().get(i).getRowList();
+			for(int j=0; j < currentRow.size(); j++){
+				result += currentRow.get(j) + " ";
+			}
+			result += "<br/>";
+		}
+		return result;
 	}
 
 }

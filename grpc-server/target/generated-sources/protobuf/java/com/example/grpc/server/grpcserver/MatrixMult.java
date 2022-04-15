@@ -15,6 +15,11 @@ public final class MatrixMult {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_matrixmult_Mrow_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_matrixmult_Mrow_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_matrixmult_MatrixRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -33,16 +38,15 @@ public final class MatrixMult {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014matrix.proto\022\nmatrixmult\"w\n\rMatrixRequ" +
-      "est\022\013\n\003a00\030\001 \001(\005\022\013\n\003a01\030\002 \001(\005\022\013\n\003a10\030\003 \001" +
-      "(\005\022\013\n\003a11\030\004 \001(\005\022\013\n\003b00\030\005 \001(\005\022\013\n\003b01\030\006 \001(" +
-      "\005\022\013\n\003b10\030\007 \001(\005\022\013\n\003b11\030\010 \001(\005\"A\n\013MatrixRep" +
-      "ly\022\013\n\003c00\030\001 \001(\005\022\013\n\003c01\030\002 \001(\005\022\013\n\003c10\030\003 \001(" +
-      "\005\022\013\n\003c11\030\004 \001(\0052\230\001\n\rMatrixService\022E\n\rMult" +
+      "\n\014matrix.proto\022\nmatrixmult\"\023\n\004Mrow\022\013\n\003ro" +
+      "w\030\001 \003(\005\"O\n\rMatrixRequest\022\036\n\004mat1\030\001 \003(\0132\020" +
+      ".matrixmult.Mrow\022\036\n\004mat2\030\002 \003(\0132\020.matrixm" +
+      "ult.Mrow\",\n\013MatrixReply\022\035\n\003mat\030\001 \003(\0132\020.m" +
+      "atrixmult.Mrow2\230\001\n\rMatrixService\022E\n\rMult" +
       "iplyBlock\022\031.matrixmult.MatrixRequest\032\027.m" +
       "atrixmult.MatrixReply\"\000\022@\n\010AddBlock\022\031.ma" +
       "trixmult.MatrixRequest\032\027.matrixmult.Matr" +
-      "ixReply\"\000B7\n\"com.example.grpc.server.grp",
+      "ixReply\"\000B7\n\"com.example.grpc.server.grp" +
       "cserverB\nMatrixMultP\001\242\002\002MMb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
@@ -57,18 +61,24 @@ public final class MatrixMult {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_matrixmult_MatrixRequest_descriptor =
+    internal_static_matrixmult_Mrow_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_matrixmult_Mrow_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_matrixmult_Mrow_descriptor,
+        new java.lang.String[] { "Row", });
+    internal_static_matrixmult_MatrixRequest_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_matrixmult_MatrixRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_matrixmult_MatrixRequest_descriptor,
-        new java.lang.String[] { "A00", "A01", "A10", "A11", "B00", "B01", "B10", "B11", });
+        new java.lang.String[] { "Mat1", "Mat2", });
     internal_static_matrixmult_MatrixReply_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_matrixmult_MatrixReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_matrixmult_MatrixReply_descriptor,
-        new java.lang.String[] { "C00", "C01", "C10", "C11", });
+        new java.lang.String[] { "Mat", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -16,12 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUpload {
 	public static String uploadDirectory = System.getProperty("user.dir") + "/uploadedmatrixfiles";
 
-	/*
-	 * @RequestMapping("/")
-	 * public String UploadPage(Model model) {
-	 * return "uploadview";
-	 * }
-	 */
 	@RequestMapping("/")
 		 public String upload(Model model)
 		 {

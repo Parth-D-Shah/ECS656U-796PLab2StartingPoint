@@ -8,22 +8,26 @@ public interface MatrixReplyOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 c00 = 1;</code>
+   * <code>repeated .matrixmult.Mrow mat = 1;</code>
    */
-  int getC00();
-
+  java.util.List<com.example.grpc.server.grpcserver.Mrow> 
+      getMatList();
   /**
-   * <code>int32 c01 = 2;</code>
+   * <code>repeated .matrixmult.Mrow mat = 1;</code>
    */
-  int getC01();
-
+  com.example.grpc.server.grpcserver.Mrow getMat(int index);
   /**
-   * <code>int32 c10 = 3;</code>
+   * <code>repeated .matrixmult.Mrow mat = 1;</code>
    */
-  int getC10();
-
+  int getMatCount();
   /**
-   * <code>int32 c11 = 4;</code>
+   * <code>repeated .matrixmult.Mrow mat = 1;</code>
    */
-  int getC11();
+  java.util.List<? extends com.example.grpc.server.grpcserver.MrowOrBuilder> 
+      getMatOrBuilderList();
+  /**
+   * <code>repeated .matrixmult.Mrow mat = 1;</code>
+   */
+  com.example.grpc.server.grpcserver.MrowOrBuilder getMatOrBuilder(
+      int index);
 }

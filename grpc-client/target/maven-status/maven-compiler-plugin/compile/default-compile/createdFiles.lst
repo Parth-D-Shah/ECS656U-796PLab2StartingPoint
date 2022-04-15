@@ -4,6 +4,7 @@ com\example\grpc\server\grpcserver\HelloResponse.class
 com\example\grpc\server\grpcserver\MatrixServiceGrpc$MatrixServiceStub.class
 com\example\grpc\server\grpcserver\HelloResponseOrBuilder.class
 com\example\grpc\server\grpcserver\PingPongServiceGrpc$PingPongServiceFutureStub.class
+com\example\grpc\server\grpcserver\Mrow$1.class
 com\example\grpc\server\grpcserver\PingPongServiceGrpc$PingPongServiceDescriptorSupplier.class
 com\example\grpc\server\grpcserver\MatrixMult.class
 com\example\grpc\server\grpcserver\MatrixServiceGrpc$MatrixServiceDescriptorSupplier.class
@@ -16,7 +17,9 @@ com\example\grpc\server\grpcserver\PingPongServiceGrpc$MethodHandlers.class
 com\example\grpc\server\grpcserver\HelloServiceGrpc$HelloServiceStub.class
 com\example\grpc\server\grpcserver\HelloServiceGrpc$1.class
 com\example\grpc\server\grpcserver\MatrixRequestOrBuilder.class
+com\example\grpc\server\grpcserver\Mrow.class
 com\example\grpc\server\grpcserver\HelloResponse$Builder.class
+com\example\grpc\server\grpcserver\MrowOrBuilder.class
 com\example\grpc\server\grpcserver\MatrixServiceGrpc$MatrixServiceImplBase.class
 com\example\grpc\server\grpcserver\MatrixReplyOrBuilder.class
 com\example\grpc\server\grpcserver\MatrixReply$Builder.class
@@ -37,6 +40,7 @@ com\example\grpc\server\grpcserver\HelloServiceGrpc$HelloServiceFutureStub.class
 com\example\grpc\server\grpcserver\PingPongServiceGrpc$PingPongServiceStub.class
 com\example\grpc\server\grpcserver\PongResponseOrBuilder.class
 com\example\grpc\server\grpcserver\PingRequest$1.class
+com\example\grpc\server\grpcserver\Mrow$Builder.class
 com\example\grpc\server\grpcserver\MatrixServiceGrpc$MethodHandlers.class
 com\example\grpc\server\grpcserver\PongResponse$1.class
 com\example\grpc\server\grpcserver\PingPongServiceOuterClass$1.class
@@ -45,7 +49,6 @@ com\example\grpc\server\grpcserver\PingPongServiceGrpc$PingPongServiceImplBase.c
 com\example\grpc\client\grpcclient\PingPongEndpoint.class
 com\example\grpc\server\grpcserver\HelloServiceGrpc.class
 com\example\grpc\server\grpcserver\MatrixReply$1.class
-com\example\grpc\server\grpcserver\PingRequest$Builder.class
 com\example\grpc\server\grpcserver\PongResponse$Builder.class
 com\example\grpc\server\grpcserver\MatrixRequest$1.class
 com\example\grpc\server\grpcserver\MatrixServiceGrpc.class

@@ -19,10 +19,7 @@ public  final class MatrixReply extends
     super(builder);
   }
   private MatrixReply() {
-    c00_ = 0;
-    c01_ = 0;
-    c10_ = 0;
-    c11_ = 0;
+    mat_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -50,24 +47,13 @@ public  final class MatrixReply extends
             }
             break;
           }
-          case 8: {
-
-            c00_ = input.readInt32();
-            break;
-          }
-          case 16: {
-
-            c01_ = input.readInt32();
-            break;
-          }
-          case 24: {
-
-            c10_ = input.readInt32();
-            break;
-          }
-          case 32: {
-
-            c11_ = input.readInt32();
+          case 10: {
+            if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+              mat_ = new java.util.ArrayList<com.example.grpc.server.grpcserver.Mrow>();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            mat_.add(
+                input.readMessage(com.example.grpc.server.grpcserver.Mrow.parser(), extensionRegistry));
             break;
           }
         }
@@ -78,6 +64,9 @@ public  final class MatrixReply extends
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        mat_ = java.util.Collections.unmodifiableList(mat_);
+      }
       makeExtensionsImmutable();
     }
   }
@@ -93,40 +82,39 @@ public  final class MatrixReply extends
             com.example.grpc.server.grpcserver.MatrixReply.class, com.example.grpc.server.grpcserver.MatrixReply.Builder.class);
   }
 
-  public static final int C00_FIELD_NUMBER = 1;
-  private int c00_;
+  public static final int MAT_FIELD_NUMBER = 1;
+  private java.util.List<com.example.grpc.server.grpcserver.Mrow> mat_;
   /**
-   * <code>int32 c00 = 1;</code>
+   * <code>repeated .matrixmult.Mrow mat = 1;</code>
    */
-  public int getC00() {
-    return c00_;
+  public java.util.List<com.example.grpc.server.grpcserver.Mrow> getMatList() {
+    return mat_;
   }
-
-  public static final int C01_FIELD_NUMBER = 2;
-  private int c01_;
   /**
-   * <code>int32 c01 = 2;</code>
+   * <code>repeated .matrixmult.Mrow mat = 1;</code>
    */
-  public int getC01() {
-    return c01_;
+  public java.util.List<? extends com.example.grpc.server.grpcserver.MrowOrBuilder> 
+      getMatOrBuilderList() {
+    return mat_;
   }
-
-  public static final int C10_FIELD_NUMBER = 3;
-  private int c10_;
   /**
-   * <code>int32 c10 = 3;</code>
+   * <code>repeated .matrixmult.Mrow mat = 1;</code>
    */
-  public int getC10() {
-    return c10_;
+  public int getMatCount() {
+    return mat_.size();
   }
-
-  public static final int C11_FIELD_NUMBER = 4;
-  private int c11_;
   /**
-   * <code>int32 c11 = 4;</code>
+   * <code>repeated .matrixmult.Mrow mat = 1;</code>
    */
-  public int getC11() {
-    return c11_;
+  public com.example.grpc.server.grpcserver.Mrow getMat(int index) {
+    return mat_.get(index);
+  }
+  /**
+   * <code>repeated .matrixmult.Mrow mat = 1;</code>
+   */
+  public com.example.grpc.server.grpcserver.MrowOrBuilder getMatOrBuilder(
+      int index) {
+    return mat_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -141,17 +129,8 @@ public  final class MatrixReply extends
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (c00_ != 0) {
-      output.writeInt32(1, c00_);
-    }
-    if (c01_ != 0) {
-      output.writeInt32(2, c01_);
-    }
-    if (c10_ != 0) {
-      output.writeInt32(3, c10_);
-    }
-    if (c11_ != 0) {
-      output.writeInt32(4, c11_);
+    for (int i = 0; i < mat_.size(); i++) {
+      output.writeMessage(1, mat_.get(i));
     }
   }
 
@@ -160,21 +139,9 @@ public  final class MatrixReply extends
     if (size != -1) return size;
 
     size = 0;
-    if (c00_ != 0) {
+    for (int i = 0; i < mat_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, c00_);
-    }
-    if (c01_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, c01_);
-    }
-    if (c10_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, c10_);
-    }
-    if (c11_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, c11_);
+        .computeMessageSize(1, mat_.get(i));
     }
     memoizedSize = size;
     return size;
@@ -192,14 +159,8 @@ public  final class MatrixReply extends
     com.example.grpc.server.grpcserver.MatrixReply other = (com.example.grpc.server.grpcserver.MatrixReply) obj;
 
     boolean result = true;
-    result = result && (getC00()
-        == other.getC00());
-    result = result && (getC01()
-        == other.getC01());
-    result = result && (getC10()
-        == other.getC10());
-    result = result && (getC11()
-        == other.getC11());
+    result = result && getMatList()
+        .equals(other.getMatList());
     return result;
   }
 
@@ -210,14 +171,10 @@ public  final class MatrixReply extends
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + C00_FIELD_NUMBER;
-    hash = (53 * hash) + getC00();
-    hash = (37 * hash) + C01_FIELD_NUMBER;
-    hash = (53 * hash) + getC01();
-    hash = (37 * hash) + C10_FIELD_NUMBER;
-    hash = (53 * hash) + getC10();
-    hash = (37 * hash) + C11_FIELD_NUMBER;
-    hash = (53 * hash) + getC11();
+    if (getMatCount() > 0) {
+      hash = (37 * hash) + MAT_FIELD_NUMBER;
+      hash = (53 * hash) + getMatList().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -347,18 +304,17 @@ public  final class MatrixReply extends
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
+        getMatFieldBuilder();
       }
     }
     public Builder clear() {
       super.clear();
-      c00_ = 0;
-
-      c01_ = 0;
-
-      c10_ = 0;
-
-      c11_ = 0;
-
+      if (matBuilder_ == null) {
+        mat_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      } else {
+        matBuilder_.clear();
+      }
       return this;
     }
 
@@ -381,10 +337,16 @@ public  final class MatrixReply extends
 
     public com.example.grpc.server.grpcserver.MatrixReply buildPartial() {
       com.example.grpc.server.grpcserver.MatrixReply result = new com.example.grpc.server.grpcserver.MatrixReply(this);
-      result.c00_ = c00_;
-      result.c01_ = c01_;
-      result.c10_ = c10_;
-      result.c11_ = c11_;
+      int from_bitField0_ = bitField0_;
+      if (matBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          mat_ = java.util.Collections.unmodifiableList(mat_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.mat_ = mat_;
+      } else {
+        result.mat_ = matBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -426,17 +388,31 @@ public  final class MatrixReply extends
 
     public Builder mergeFrom(com.example.grpc.server.grpcserver.MatrixReply other) {
       if (other == com.example.grpc.server.grpcserver.MatrixReply.getDefaultInstance()) return this;
-      if (other.getC00() != 0) {
-        setC00(other.getC00());
-      }
-      if (other.getC01() != 0) {
-        setC01(other.getC01());
-      }
-      if (other.getC10() != 0) {
-        setC10(other.getC10());
-      }
-      if (other.getC11() != 0) {
-        setC11(other.getC11());
+      if (matBuilder_ == null) {
+        if (!other.mat_.isEmpty()) {
+          if (mat_.isEmpty()) {
+            mat_ = other.mat_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureMatIsMutable();
+            mat_.addAll(other.mat_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.mat_.isEmpty()) {
+          if (matBuilder_.isEmpty()) {
+            matBuilder_.dispose();
+            matBuilder_ = null;
+            mat_ = other.mat_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            matBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getMatFieldBuilder() : null;
+          } else {
+            matBuilder_.addAllMessages(other.mat_);
+          }
+        }
       }
       onChanged();
       return this;
@@ -463,109 +439,246 @@ public  final class MatrixReply extends
       }
       return this;
     }
+    private int bitField0_;
 
-    private int c00_ ;
-    /**
-     * <code>int32 c00 = 1;</code>
-     */
-    public int getC00() {
-      return c00_;
-    }
-    /**
-     * <code>int32 c00 = 1;</code>
-     */
-    public Builder setC00(int value) {
-      
-      c00_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 c00 = 1;</code>
-     */
-    public Builder clearC00() {
-      
-      c00_ = 0;
-      onChanged();
-      return this;
+    private java.util.List<com.example.grpc.server.grpcserver.Mrow> mat_ =
+      java.util.Collections.emptyList();
+    private void ensureMatIsMutable() {
+      if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        mat_ = new java.util.ArrayList<com.example.grpc.server.grpcserver.Mrow>(mat_);
+        bitField0_ |= 0x00000001;
+       }
     }
 
-    private int c01_ ;
-    /**
-     * <code>int32 c01 = 2;</code>
-     */
-    public int getC01() {
-      return c01_;
-    }
-    /**
-     * <code>int32 c01 = 2;</code>
-     */
-    public Builder setC01(int value) {
-      
-      c01_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 c01 = 2;</code>
-     */
-    public Builder clearC01() {
-      
-      c01_ = 0;
-      onChanged();
-      return this;
-    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        com.example.grpc.server.grpcserver.Mrow, com.example.grpc.server.grpcserver.Mrow.Builder, com.example.grpc.server.grpcserver.MrowOrBuilder> matBuilder_;
 
-    private int c10_ ;
     /**
-     * <code>int32 c10 = 3;</code>
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
      */
-    public int getC10() {
-      return c10_;
+    public java.util.List<com.example.grpc.server.grpcserver.Mrow> getMatList() {
+      if (matBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(mat_);
+      } else {
+        return matBuilder_.getMessageList();
+      }
     }
     /**
-     * <code>int32 c10 = 3;</code>
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
      */
-    public Builder setC10(int value) {
-      
-      c10_ = value;
-      onChanged();
+    public int getMatCount() {
+      if (matBuilder_ == null) {
+        return mat_.size();
+      } else {
+        return matBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public com.example.grpc.server.grpcserver.Mrow getMat(int index) {
+      if (matBuilder_ == null) {
+        return mat_.get(index);
+      } else {
+        return matBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public Builder setMat(
+        int index, com.example.grpc.server.grpcserver.Mrow value) {
+      if (matBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureMatIsMutable();
+        mat_.set(index, value);
+        onChanged();
+      } else {
+        matBuilder_.setMessage(index, value);
+      }
       return this;
     }
     /**
-     * <code>int32 c10 = 3;</code>
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
      */
-    public Builder clearC10() {
-      
-      c10_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int c11_ ;
-    /**
-     * <code>int32 c11 = 4;</code>
-     */
-    public int getC11() {
-      return c11_;
-    }
-    /**
-     * <code>int32 c11 = 4;</code>
-     */
-    public Builder setC11(int value) {
-      
-      c11_ = value;
-      onChanged();
+    public Builder setMat(
+        int index, com.example.grpc.server.grpcserver.Mrow.Builder builderForValue) {
+      if (matBuilder_ == null) {
+        ensureMatIsMutable();
+        mat_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        matBuilder_.setMessage(index, builderForValue.build());
+      }
       return this;
     }
     /**
-     * <code>int32 c11 = 4;</code>
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
      */
-    public Builder clearC11() {
-      
-      c11_ = 0;
-      onChanged();
+    public Builder addMat(com.example.grpc.server.grpcserver.Mrow value) {
+      if (matBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureMatIsMutable();
+        mat_.add(value);
+        onChanged();
+      } else {
+        matBuilder_.addMessage(value);
+      }
       return this;
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public Builder addMat(
+        int index, com.example.grpc.server.grpcserver.Mrow value) {
+      if (matBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureMatIsMutable();
+        mat_.add(index, value);
+        onChanged();
+      } else {
+        matBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public Builder addMat(
+        com.example.grpc.server.grpcserver.Mrow.Builder builderForValue) {
+      if (matBuilder_ == null) {
+        ensureMatIsMutable();
+        mat_.add(builderForValue.build());
+        onChanged();
+      } else {
+        matBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public Builder addMat(
+        int index, com.example.grpc.server.grpcserver.Mrow.Builder builderForValue) {
+      if (matBuilder_ == null) {
+        ensureMatIsMutable();
+        mat_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        matBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public Builder addAllMat(
+        java.lang.Iterable<? extends com.example.grpc.server.grpcserver.Mrow> values) {
+      if (matBuilder_ == null) {
+        ensureMatIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, mat_);
+        onChanged();
+      } else {
+        matBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public Builder clearMat() {
+      if (matBuilder_ == null) {
+        mat_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        matBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public Builder removeMat(int index) {
+      if (matBuilder_ == null) {
+        ensureMatIsMutable();
+        mat_.remove(index);
+        onChanged();
+      } else {
+        matBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public com.example.grpc.server.grpcserver.Mrow.Builder getMatBuilder(
+        int index) {
+      return getMatFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public com.example.grpc.server.grpcserver.MrowOrBuilder getMatOrBuilder(
+        int index) {
+      if (matBuilder_ == null) {
+        return mat_.get(index);  } else {
+        return matBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public java.util.List<? extends com.example.grpc.server.grpcserver.MrowOrBuilder> 
+         getMatOrBuilderList() {
+      if (matBuilder_ != null) {
+        return matBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(mat_);
+      }
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public com.example.grpc.server.grpcserver.Mrow.Builder addMatBuilder() {
+      return getMatFieldBuilder().addBuilder(
+          com.example.grpc.server.grpcserver.Mrow.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public com.example.grpc.server.grpcserver.Mrow.Builder addMatBuilder(
+        int index) {
+      return getMatFieldBuilder().addBuilder(
+          index, com.example.grpc.server.grpcserver.Mrow.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .matrixmult.Mrow mat = 1;</code>
+     */
+    public java.util.List<com.example.grpc.server.grpcserver.Mrow.Builder> 
+         getMatBuilderList() {
+      return getMatFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        com.example.grpc.server.grpcserver.Mrow, com.example.grpc.server.grpcserver.Mrow.Builder, com.example.grpc.server.grpcserver.MrowOrBuilder> 
+        getMatFieldBuilder() {
+      if (matBuilder_ == null) {
+        matBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            com.example.grpc.server.grpcserver.Mrow, com.example.grpc.server.grpcserver.Mrow.Builder, com.example.grpc.server.grpcserver.MrowOrBuilder>(
+                mat_,
+                ((bitField0_ & 0x00000001) == 0x00000001),
+                getParentForChildren(),
+                isClean());
+        mat_ = null;
+      }
+      return matBuilder_;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {

@@ -1,8 +1,17 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <body>
     <pre th:text="${matrixA}"></pre>
-        <button type="button">Add</button>
-        <button type="button">Multiply</button>
+
+    <form action="/add" method="post" enctype="multipart/form-data">
+        <input type = "hidden" name="m1" th:value="${matrixA}"/>
+        <input type = "hidden" name="m2" th:value="${matrixB}">
+        <input type="submit" value="Add"/>
+    </form>
+    <form action="/multiply" method="post" enctype="multipart/form-data">
+        <input type = "hidden" name="m1" th:value="${matrixA}"/>
+        <input type = "hidden" name="m2" th:value="${matrixB}">
+        <input type="submit" value="Multiply"/>
+    </form>
     <pre th:text="${matrixB}"></pre>
     <p th:text="${message}"></p>
 </body>
