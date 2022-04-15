@@ -100,7 +100,7 @@ public class GRPCClientService {
 			request_M.addMat2(matrix_Row);
 		}
 		
-		MatrixReply response = stub.addBlock(request_M.build());
+		MatrixReply response = stub.multiplyBlock(request_M.build());
 		channel.shutdown();
 		
 		String result = "";
