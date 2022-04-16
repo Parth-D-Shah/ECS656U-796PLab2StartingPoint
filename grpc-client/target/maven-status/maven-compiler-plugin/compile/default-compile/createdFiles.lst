@@ -49,6 +49,7 @@ com\example\grpc\server\grpcserver\PingPongServiceGrpc$PingPongServiceImplBase.c
 com\example\grpc\client\grpcclient\PingPongEndpoint.class
 com\example\grpc\server\grpcserver\HelloServiceGrpc.class
 com\example\grpc\server\grpcserver\MatrixReply$1.class
+com\example\grpc\server\grpcserver\PingRequest$Builder.class
 com\example\grpc\server\grpcserver\PongResponse$Builder.class
 com\example\grpc\server\grpcserver\MatrixRequest$1.class
 com\example\grpc\server\grpcserver\MatrixServiceGrpc.class

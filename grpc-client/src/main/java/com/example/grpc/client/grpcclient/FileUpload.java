@@ -53,6 +53,10 @@ public class FileUpload {
 						return "uploadchecker";
 					}
 				}
+				if(is_Power_Of_Two(matrix_A_Rows.length) == false){
+					model.addAttribute("file_data", "Matrix must be a power of 2");
+					return "uploadchecker";
+				}
 				if (matrix_A_Rows.length != matrix_A_Rows[0].split(" ").length){
 					model.addAttribute("file_data", "matrix A is not square matrix");
 					return "uploadchecker";
@@ -93,5 +97,17 @@ public class FileUpload {
 		}
 		model.addAttribute("message", "Successfully uploaded files " + fileNames.toString());
 		return "uploadsuccess";
+	}
+	public static boolean is_Power_Of_Two(int n)
+	{
+		if (n == 0)
+            return false;
+ 
+        while (n != 1) {
+            if (n % 2 != 0)
+                return false;
+            n = n / 2;
+        }
+        return true;
 	}
 }
