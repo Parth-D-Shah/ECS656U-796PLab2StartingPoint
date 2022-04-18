@@ -34,8 +34,7 @@ public class GRPCClientService {
 		.usePlaintext()
 		.build();
 
-		MatrixServiceGrpc.MatrixServiceBlockingStub stub
-		 = MatrixServiceGrpc.newBlockingStub(channel);
+		MatrixServiceGrpc.MatrixServiceBlockingStub stub = MatrixServiceGrpc.newBlockingStub(channel);
 
 		MatrixRequest.Builder request_M = MatrixRequest.newBuilder();
 		String[] m1_split = m1.split("\n");
@@ -73,10 +72,25 @@ public class GRPCClientService {
 		return result;
     }
 	public String multiply(String m1, String m2, String deadline){
-		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",9090)
-		.usePlaintext()
-		.build();
-		MatrixServiceGrpc.MatrixServiceBlockingStub stub = MatrixServiceGrpc.newBlockingStub(channel);
+		ManagedChannel[] channels = {
+			ManagedChannelBuilder.forAddress("10.128.0.4", 9090).usePlaintext().build(), 
+			ManagedChannelBuilder.forAddress("10.128.0.5", 9090).usePlaintext().build(),
+			ManagedChannelBuilder.forAddress("10.128.0.6", 9090).usePlaintext().build(),
+			ManagedChannelBuilder.forAddress("10.128.0.7", 9090).usePlaintext().build(),
+			ManagedChannelBuilder.forAddress("10.128.0.8", 9090).usePlaintext().build(),
+			ManagedChannelBuilder.forAddress("10.128.0.9", 9090).usePlaintext().build(),
+			ManagedChannelBuilder.forAddress("10.128.0.17", 9090).usePlaintext().build(),
+			ManagedChannelBuilder.forAddress("10.128.0.18", 9090).usePlaintext().build()
+		};
+		MatrixServiceGrpc.MatrixServiceBlockingStub stub1 = MatrixServiceGrpc.newBlockingStub(channels[0]);
+		MatrixServiceGrpc.MatrixServiceBlockingStub stub2 = MatrixServiceGrpc.newBlockingStub(channels[1]);
+		MatrixServiceGrpc.MatrixServiceBlockingStub stub3 = MatrixServiceGrpc.newBlockingStub(channels[2]);
+		MatrixServiceGrpc.MatrixServiceBlockingStub stub4 = MatrixServiceGrpc.newBlockingStub(channels[3]);
+		MatrixServiceGrpc.MatrixServiceBlockingStub stub5 = MatrixServiceGrpc.newBlockingStub(channels[4]);
+		MatrixServiceGrpc.MatrixServiceBlockingStub stub6 = MatrixServiceGrpc.newBlockingStub(channels[5]);
+		MatrixServiceGrpc.MatrixServiceBlockingStub stub7 = MatrixServiceGrpc.newBlockingStub(channels[6]);
+		MatrixServiceGrpc.MatrixServiceBlockingStub stub8 = MatrixServiceGrpc.newBlockingStub(channels[7]);
+
 		
 		String[] m1_split1 = m1.split("\n");
 		String[] m2_split1 = m2.split("\n");
@@ -168,7 +182,7 @@ public class GRPCClientService {
 			request_M.addMat1(matrix_Row);
 			request_M.addMat2(matrix_Row1);
 		}
-		MatrixReply response = stub.multiplyBlock(request_M.build());
+		MatrixReply response = stub1.multiplyBlock(request_M.build());
 		
 		for (int i = 0; i < response.getMatCount(); i++) {
             Mrow row = response.getMat(i);
@@ -193,7 +207,7 @@ public class GRPCClientService {
 			request_M1.addMat1(matrix_Row);
 			request_M1.addMat2(matrix_Row1);
 		}
-		MatrixReply response1 = stub.multiplyBlock(request_M1.build());
+		MatrixReply response1 = stub2.multiplyBlock(request_M1.build());
 		//channel.shutdown();
 		
 		for (int i = 0; i < response1.getMatCount(); i++) {
@@ -219,7 +233,7 @@ public class GRPCClientService {
 			request_M2.addMat1(matrix_Row);
 			request_M2.addMat2(matrix_Row1);
 		}
-		MatrixReply response2 = stub.multiplyBlock(request_M2.build());
+		MatrixReply response2 = stub3.multiplyBlock(request_M2.build());
 		//channel.shutdown();
 		
 		for (int i = 0; i < response2.getMatCount(); i++) {
@@ -245,7 +259,7 @@ public class GRPCClientService {
 			request_M3.addMat1(matrix_Row);
 			request_M3.addMat2(matrix_Row1);
 		}
-		MatrixReply response3 = stub.multiplyBlock(request_M3.build());
+		MatrixReply response3 = stub4.multiplyBlock(request_M3.build());
 		//channel.shutdown();
 		
 		for (int i = 0; i < response3.getMatCount(); i++) {
@@ -270,7 +284,7 @@ public class GRPCClientService {
 			request_M4.addMat1(matrix_Row);
 			request_M4.addMat2(matrix_Row1);
 		}
-		MatrixReply response4 = stub.multiplyBlock(request_M4.build());
+		MatrixReply response4 = stub5.multiplyBlock(request_M4.build());
 		
 		for (int i = 0; i < response4.getMatCount(); i++) {
             Mrow row = response4.getMat(i);
@@ -294,7 +308,7 @@ public class GRPCClientService {
 			request_M5.addMat1(matrix_Row);
 			request_M5.addMat2(matrix_Row1);
 		}
-		MatrixReply response5 = stub.multiplyBlock(request_M5.build());
+		MatrixReply response5 = stub6.multiplyBlock(request_M5.build());
 		
 		for (int i = 0; i < response5.getMatCount(); i++) {
             Mrow row = response5.getMat(i);
@@ -318,7 +332,7 @@ public class GRPCClientService {
 			request_M6.addMat1(matrix_Row);
 			request_M6.addMat2(matrix_Row1);
 		}
-		MatrixReply response6 = stub.multiplyBlock(request_M6.build());
+		MatrixReply response6 = stub7.multiplyBlock(request_M6.build());
 		
 		for (int i = 0; i < response6.getMatCount(); i++) {
             Mrow row = response6.getMat(i);
@@ -342,16 +356,23 @@ public class GRPCClientService {
 			request_M7.addMat1(matrix_Row);
 			request_M7.addMat2(matrix_Row1);
 		}
-		MatrixReply response7 = stub.multiplyBlock(request_M7.build());
-		channel.shutdown();
+		MatrixReply response7 = stub8.multiplyBlock(request_M7.build());
 		
 		for (int i = 0; i < response7.getMatCount(); i++) {
             Mrow row = response7.getMat(i);
             for (int j = 0; j < row.getRowCount(); j++) {
                 result[3][i][j] += row.getRow(j);
             }
-        }
+        }	
 		//////////////////////////////////////////////////////////////77777777777777777777777777777777777
+		channels[0].shutdown();
+		channels[1].shutdown();
+		channels[2].shutdown();
+		channels[3].shutdown();
+		channels[4].shutdown();
+		channels[5].shutdown();
+		channels[6].shutdown();
+		channels[7].shutdown();
 		//print result
 		String part1 = "";
 		String part2 = "";
