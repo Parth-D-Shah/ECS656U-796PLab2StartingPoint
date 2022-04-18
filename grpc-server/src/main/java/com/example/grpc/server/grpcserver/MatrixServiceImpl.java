@@ -57,10 +57,10 @@ public class MatrixServiceImpl extends MatrixServiceGrpc.MatrixServiceImplBase {
 			}
 		}
 		// convert 2d array to list of mrow
-		for (int i = 0; i < m1.size(); i++)
+		for (int i = 0; i < m3.length; i++)
 		{
 			Mrow.Builder Mrow_object = Mrow.newBuilder();
-			for (int j = 0; j < Rsize; j++)
+			for (int j = 0; j < m3[i].length; j++)
 			{
 				Mrow_object.addRow(m3[i][j]);
 			}

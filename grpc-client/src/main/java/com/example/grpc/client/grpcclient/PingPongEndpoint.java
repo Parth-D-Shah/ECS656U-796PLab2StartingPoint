@@ -32,6 +32,6 @@ public class PingPongEndpoint {
 	}
 	@RequestMapping("/multiply")
 	public String multiply(@RequestParam String m1, String m2) {
-		return grpcClientService.multiply(m1,m2);
+		return grpcClientService.multiply(m1,m2,"0.1");
 	}
 }

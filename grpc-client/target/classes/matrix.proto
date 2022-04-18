@@ -31,7 +31,7 @@ message Mrow {
 }
 
 // The request message containing the two matricies
-message MatrixRequest {
+message MatrixRequest{
   repeated Mrow mat1 = 1;
   repeated Mrow mat2 = 2;
 }
@@ -39,6 +39,13 @@ message MatrixRequest {
 // The response message containing the result marix
 message MatrixReply {
   repeated Mrow mat = 1;
+}
+
+message MatrixScaling{
+  repeated Mrow mat1 = 1;
+  repeated Mrow mat2 = 2;
+  repeated int32 offset = 3;
+  int32 pos = 4;
 }
 
 

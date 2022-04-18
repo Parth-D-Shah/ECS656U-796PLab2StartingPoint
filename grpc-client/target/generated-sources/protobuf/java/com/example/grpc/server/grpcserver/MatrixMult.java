@@ -29,6 +29,11 @@ public final class MatrixMult {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_matrixmult_MatrixReply_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_matrixmult_MatrixScaling_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_matrixmult_MatrixScaling_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -42,12 +47,15 @@ public final class MatrixMult {
       "w\030\001 \003(\005\"O\n\rMatrixRequest\022\036\n\004mat1\030\001 \003(\0132\020" +
       ".matrixmult.Mrow\022\036\n\004mat2\030\002 \003(\0132\020.matrixm" +
       "ult.Mrow\",\n\013MatrixReply\022\035\n\003mat\030\001 \003(\0132\020.m" +
-      "atrixmult.Mrow2\230\001\n\rMatrixService\022E\n\rMult" +
-      "iplyBlock\022\031.matrixmult.MatrixRequest\032\027.m" +
-      "atrixmult.MatrixReply\"\000\022@\n\010AddBlock\022\031.ma" +
-      "trixmult.MatrixRequest\032\027.matrixmult.Matr" +
-      "ixReply\"\000B7\n\"com.example.grpc.server.grp" +
-      "cserverB\nMatrixMultP\001\242\002\002MMb\006proto3"
+      "atrixmult.Mrow\"l\n\rMatrixScaling\022\036\n\004mat1\030" +
+      "\001 \003(\0132\020.matrixmult.Mrow\022\036\n\004mat2\030\002 \003(\0132\020." +
+      "matrixmult.Mrow\022\016\n\006offset\030\003 \003(\005\022\013\n\003pos\030\004" +
+      " \001(\0052\230\001\n\rMatrixService\022E\n\rMultiplyBlock\022" +
+      "\031.matrixmult.MatrixRequest\032\027.matrixmult." +
+      "MatrixReply\"\000\022@\n\010AddBlock\022\031.matrixmult.M",
+      "atrixRequest\032\027.matrixmult.MatrixReply\"\000B" +
+      "7\n\"com.example.grpc.server.grpcserverB\nM" +
+      "atrixMultP\001\242\002\002MMb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -79,6 +87,12 @@ public final class MatrixMult {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_matrixmult_MatrixReply_descriptor,
         new java.lang.String[] { "Mat", });
+    internal_static_matrixmult_MatrixScaling_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_matrixmult_MatrixScaling_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_matrixmult_MatrixScaling_descriptor,
+        new java.lang.String[] { "Mat1", "Mat2", "Offset", "Pos", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
